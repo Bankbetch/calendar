@@ -1,0 +1,12 @@
+const express = require('express')
+const app = express()
+const bodyParser = require('body-parser')
+const databases = require('./configs/databases')
+const config = require('./configs/index')
+const responseFormat = require('./configs/responseFormat')
+app.use(responseFormat)
+app.use(bodyParser.json())
+app.use(require('./routes'))
+databases.mongoDB()
+require('./configs/errorHandler')(config.isProduction, app)
+module.exports = app

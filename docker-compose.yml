@@ -1,0 +1,42 @@
+version: '3.1'
+
+volumes:
+  mongo-data:
+    external:
+      name: mongo-data
+
+services:
+  mongo:
+    image: mongo:3.6
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: rootpassword
+    restart: always
+    container_name: mongo
+    volumes:
+      - mongo-data:/data/db
+    ports:
+      - 27017:27017
+    networks:
+      - webproxy
+
+  calendar:
+    image: calendar
+    container_name: calendar
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+      MONGO_URL: 'mongodb://root:rootpassword@mongo:27017/calendar?authSource=admin&readPreference=primary&ssl=false'
+    ports:
+      - 3000:3000
+    networks:
+      - webproxy
+    depends_on:
+      - mongo
+
+networks:
+  webproxy:
+    external:
+      name: proxy

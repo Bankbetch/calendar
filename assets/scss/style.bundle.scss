@@ -1,0 +1,161 @@
+@import './variables';
+$font-size-base: 0.875rem;
+$theme-colors: (
+  'primary': $primary,
+  'primary_l': $primary_l,
+);
+
+.vuecal__menu,
+.vuecal__cell-events-count {
+  background-color: $primary !important;
+}
+.vuecal__title-bar {
+  background-color: $primary_l !important;
+}
+.vuecal__cell--today,
+.vuecal__cell--current {
+  // background-color: $primary_l !important;
+}
+.vuecal:not(.vuecal--day-view) .vuecal__cell--selected {
+  background-color: $success_l !important;
+}
+.vuecal__cell--selected:before {
+  border-color: $primary_l !important;
+}
+
+.container-cal {
+  width: calc(100vw - 1.5rem);
+  height: calc(100vh - 3.5rem);
+  margin: 0.75rem;
+}
+
+.vuecal__event.work {
+  background-color: $work;
+  border: 1px solid $work_border;
+  color: $white;
+}
+.vuecal__event.health {
+  background-color: $health;
+  border: 1px solid $health_border;
+  color: $white;
+}
+.vuecal__event.sport {
+  background-color: $sport;
+  border: 1px solid $sport_border;
+  color: $white;
+}
+
+.button-locked {
+  position: relative;
+
+  .spinner-border {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -7px;
+    margin-left: -7px;
+  }
+
+  span.text {
+    visibility: hidden;
+  }
+}
+@import 'node_modules/bootstrap/scss/bootstrap';
+@import 'node_modules/bootstrap-vue/src/index.scss';
+
+.form-group {
+  margin-bottom: 0.5rem;
+}
+.mx-calendar-content {
+  .cell.in-range,
+  .mx-calendar-content .cell.hover-in-range {
+    background-color: $primary_l;
+  }
+  .cell.active {
+    background-color: $primary;
+  }
+}
+.mx-input {
+  height: 35px;
+  &:hover,
+  &:focus {
+    border-color: $primary;
+  }
+}
+.mx-table-date td,
+.mx-table-date th {
+  border-radius: 50%;
+}
+.mx-datepicker-range {
+  width: 100%;
+}
+
+.mxValidate {
+  input {
+    border: 1px solid $danger !important;
+    padding-right: calc(1.286em + 1rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23ff495c' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23ff495c' stroke='none'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(2em + 0.25rem) center;
+    background-size: calc(0.643em + 0.5rem) calc(0.643em + 0.5rem);
+
+    &:hover,
+    &:focus,
+    &:active {
+      border: 1px solid $danger !important;
+    }
+  }
+}
+textarea {
+  resize: none;
+}
+
+.multiselect {
+  &__select {
+    height: 35px;
+  }
+  &__option--highlight {
+    background: $primary;
+  }
+  &__tags {
+    min-height: 35px;
+    height: 35px;
+  }
+  &.invalid {
+    .multiselect__tags {
+      background-repeat: no-repeat;
+      background-position: right calc(2em + 0.25rem) center;
+      background-size: calc(0.643em + 0.5rem) calc(0.643em + 0.5rem);
+      border: 1px solid $danger;
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23ff495c'%3E%3Ccircle cx='6' cy='6' r='4.5'/%3E%3Cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3E%3Ccircle cx='6' cy='8.2' r='.6' fill='%23ff495c' stroke='none'/%3E%3C/svg%3E");
+    }
+  }
+  &__placeholder {
+    padding: 0;
+    margin: 0;
+  }
+}
+.multiselect__option--selected.multiselect__option--highlight {
+  background: $primary_l;
+  color: $dark;
+  &:hover {
+    color: $dark;
+  }
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  display: inline-block;
+  padding-right: 0.25rem;
+}
+
+label,
+legend {
+  &.required:after {
+    content: '*';
+    color: $danger;
+    margin-left: 0.25rem;
+  }
+}
